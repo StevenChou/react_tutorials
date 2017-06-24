@@ -1,5 +1,11 @@
+// import lib
 import React from 'react';  // 建立或管理 component
 import ReactDOM from 'react-dom'; // 與真實 DOM 的互動
+
+// import javascript file
+import SearchBar from './components/search_bar';
+
+const YOUTUBE_API_KEY = 'AIzaSyC4CjWqlAmeWXGRpvGuyvFAv-54mEuZiwc';
 
 // Create a new component. This component should produce 
 // some HTML
@@ -11,7 +17,13 @@ import ReactDOM from 'react-dom'; // 與真實 DOM 的互動
 //   return <div>Hi</div>;
 // }
 
-const App = () => <div>Hi!</div>
+const App = () => {
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  );
+}
 
 // const is ready only
 // App = 5;
