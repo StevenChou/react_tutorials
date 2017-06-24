@@ -6,10 +6,18 @@ import React, { Component } from 'react'; // translate the JSX to normal Javascr
 
 class SearchBar extends Component {
   render() {
+    // return (
+    //   <input onChange={this.onInputChange}/>
+    // );
+
     return (
-      <input value="hi!!"/>
+      <input onChange={event => console.log('arrow funtion',event.target.value)} />
     );
   }
+
+  // onInputChange(event) {
+  //   console.log(event.target.value);
+  // }
 }
 
 export default SearchBar;
