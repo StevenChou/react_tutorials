@@ -5,13 +5,25 @@ import React, { Component } from 'react'; // translate the JSX to normal Javascr
 // }
 
 class SearchBar extends Component {
+  constructor(props) { // 當建立 instance 時，會被呼叫[初始化物件]
+    super(props);
+
+    this.state = { term: ''};
+  }
+
   render() {
     // return (
     //   <input onChange={this.onInputChange}/>
     // );
 
     return (
-      <input onChange={event => console.log('arrow funtion',event.target.value)} />
+      <div>
+        <input onChange={event => this.setState({ term: event.target.value })} />
+        {/*
+          Value of the input: {this.state.term}
+          */
+        }
+      </div>
     );
   }
 
