@@ -17,6 +17,7 @@ const YOUTUBE_API_KEY = 'AIzaSyC4CjWqlAmeWXGRpvGuyvFAv-54mEuZiwc';
 //   return <div>Hi</div>;
 // }
 
+// ** App is a functional component **
 const App = () => {
   return (
     <div>
