@@ -1,11 +1,16 @@
 // import lib
 import React from 'react';  // 建立或管理 component
 import ReactDOM from 'react-dom'; // 與真實 DOM 的互動
+import YTSearch from 'youtube-api-search';
 
 // import javascript file
 import SearchBar from './components/search_bar';
 
 const YOUTUBE_API_KEY = 'AIzaSyC4CjWqlAmeWXGRpvGuyvFAv-54mEuZiwc';
+
+YTSearch({key: YOUTUBE_API_KEY, term: 'surfboards'}, function(data) {
+  console.log(data);
+});
 
 // Create a new component. This component should produce 
 // some HTML
