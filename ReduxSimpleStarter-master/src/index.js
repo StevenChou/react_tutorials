@@ -2,6 +2,7 @@
 import React, { Component } from 'react';  // 建立或管理 component
 import ReactDOM from 'react-dom'; // 與真實 DOM 的互動
 import YTSearch from 'youtube-api-search';
+import _ from 'lodash';
 
 // import javascript file
 import SearchBar from './components/search_bar';
@@ -53,9 +54,12 @@ class App extends Component {
   }
 
   render() {
+    // 每 300 毫秒呼叫一次
+    const videoSearch = _.debounce((term) => this.videoSearch(term), 300);
+
     return (
       <div>
-        <SearchBar onSearchTermChange={term => this.videoSearch(term)}/>
+        <SearchBar onSearchTermChange={videoSearch}/>
         <VideoDetail video={this.state.selectdVideo} />
         <VideoList
           onVideoSelect={selectdVideo => this.setState({selectdVideo})}
