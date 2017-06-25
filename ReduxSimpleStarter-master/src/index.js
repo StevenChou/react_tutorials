@@ -1,5 +1,5 @@
 // import lib
-import React from 'react';  // 建立或管理 component
+import React, { Component } from 'react';  // 建立或管理 component
 import ReactDOM from 'react-dom'; // 與真實 DOM 的互動
 import YTSearch from 'youtube-api-search';
 
@@ -7,10 +7,6 @@ import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
 
 const YOUTUBE_API_KEY = 'AIzaSyC4CjWqlAmeWXGRpvGuyvFAv-54mEuZiwc';
-
-YTSearch({key: YOUTUBE_API_KEY, term: 'surfboards'}, function(data) {
-  console.log(data);
-});
 
 // Create a new component. This component should produce 
 // some HTML
@@ -23,13 +19,37 @@ YTSearch({key: YOUTUBE_API_KEY, term: 'surfboards'}, function(data) {
 // }
 
 // ** App is a functional component **
-const App = () => {
-  return (
-    <div>
-      <SearchBar />
-    </div>
-  );
+// const App = () => {
+//   return (
+//     <div>
+//       <SearchBar />
+//     </div>
+//   );
+// }
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { videos: [] };
+    
+    YTSearch({key: YOUTUBE_API_KEY, term: 'surfboards'}, (videos) => {
+      // this.setState({ videos: videos });
+      this.setState({ videos });
+    });    
+  }
+
+  render() {
+    return (
+      <div>
+        <SearchBar />
+      </div>
+    );
+  }
 }
+
+
+
 
 // const is ready only
 // App = 5;

@@ -8,7 +8,7 @@ class SearchBar extends Component {
   constructor(props) { // 當建立 instance 時，會被呼叫[初始化物件]
     super(props);
 
-    this.state = { term: ''};
+    this.state = { term: '' };
   }
 
   render() {
