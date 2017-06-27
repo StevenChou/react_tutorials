@@ -1,4 +1,4 @@
-# ReduxSimpleStarter(Weather forecast browser)
+# ReduxSimpleStarter(Weather Forecast Browser)
 
 Interested in learning [Redux](https://www.udemy.com/react-redux/)?
 
