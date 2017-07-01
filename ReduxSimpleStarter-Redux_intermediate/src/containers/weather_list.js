@@ -28,15 +28,14 @@ class WeatherList extends Component {
   }
 
   render() {
-    const tdStyle = {width: '25%'};
     return (
       <table className="table table-hover">
         <thead>
           <tr>
-            <th style={tdStyle}>City</th>
-            <th style={tdStyle}>Temperature (K)</th>
-            <th style={tdStyle}>Pressure (hPa)</th>
-            <th style={tdStyle}>Humidity (%)</th>
+            <th>City</th>
+            <th>Temperature (K)</th>
+            <th>Pressure (hPa)</th>
+            <th>Humidity (%)</th>
           </tr>
         </thead>
         <tbody>
