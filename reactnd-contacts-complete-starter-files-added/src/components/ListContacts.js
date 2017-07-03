@@ -58,13 +58,16 @@ class ListContacts extends Component {
   }
 
   render() {
+    const { contacts, onDeleteContract } = this.props;
+    const { query } = this.state;
+
     let showingContacts = null;
-    if (this.state.query) {
+    if (query) {
       // i ===> ignore case
-      const match = new RegExp(escapeRegExp(this.state.query), 'i');
-      showingContacts = this.props.contacts.filter((contact) => match.test(contact.name));
+      const match = new RegExp(escapeRegExp(query), 'i');
+      showingContacts = contacts.filter((contact) => match.test(contact.name));
     } else {
-      showingContacts = this.props.contacts;
+      showingContacts = contacts;
     }
 
     showingContacts.sort(sortBy('name'));
@@ -89,7 +92,7 @@ class ListContacts extends Component {
               <p>{contact.name}</p>
               <p>{contact.email}</p>
             </div>
-            <button onClick={() => this.props.onDeleteContract(contact)} className="contact-remove">
+            <button onClick={() => onDeleteContract(contact)} className="contact-remove">
               Remove
             </button>
           </li>
