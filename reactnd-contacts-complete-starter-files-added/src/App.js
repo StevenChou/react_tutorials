@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 import ListContacts from './components/ListContacts';
 import * as ContactsAPI from './utils/ContactsAPI';
@@ -30,7 +31,6 @@ class App extends Component {
     super(props);
     
     this.state = {
-      screen: 'list', // list, create
       contacts: []
     };
   }
@@ -54,17 +54,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        { this.state.screen === 'list' && (
+        {/* we want it to pass the ListContacts some props */}
+        <Route exact path="/" render={() => (
           <ListContacts
             onDeleteContract={this.removeContact} 
-            contacts={this.state.contacts}
-            onNavigate={() => {
-              this.setState({ screen: 'create' })
-            }}/>
-        )}
-        { this.state.screen === 'create' && (
-          <CreateContact />    
-        )}    
+            contacts={this.state.contacts} />
+        )} />
+        <Route path="/create" component={CreateContact} />
       </div>
     )
   }
