@@ -75,7 +75,7 @@ class App extends Component {
           */
         }
 
-        {/* 新增完，導回首頁 */}
+        {/* 新增完，導回首頁(程式控制導頁) */}
         <Route path="/create" render={({history}) => (
           <CreateContact 
             onCreateContact={(contact) => {
