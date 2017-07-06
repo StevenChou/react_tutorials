@@ -51,6 +51,14 @@ class App extends Component {
     ContactsAPI.remove(contact)
   }
 
+  createContact = (contact) => {
+    ContactsAPI.create(contact).then(contact => {
+      this.setState((state) => ({
+        contacts: state.contacts.concat([contact])
+      }))
+    })
+  } 
+
   render() {
     return (
       <div>
@@ -60,7 +68,22 @@ class App extends Component {
             onDeleteContract={this.removeContact} 
             contacts={this.state.contacts} />
         )} />
-        <Route path="/create" component={CreateContact} />
+
+        {
+          /* 當不使用 props 使用
+            <Route path="/create" component={CreateContact} />
+          */
+        }
+
+        {/* 新增完，導回首頁 */}
+        <Route path="/create" render={({history}) => (
+          <CreateContact 
+            onCreateContact={(contact) => {
+              this.createContact(contact)
+              history.push('/')
+            }} 
+          />
+        )} />
       </div>
     )
   }
