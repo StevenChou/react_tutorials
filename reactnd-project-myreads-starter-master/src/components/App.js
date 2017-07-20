@@ -1,8 +1,11 @@
-import React from 'react'
-import * as BooksAPI from './BooksAPI'
-import './App.css'
+import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 
-class BooksApp extends React.Component {
+import * as BooksAPI from './../utils/BooksAPI'
+
+import './../../style/App.css'
+
+class BooksApp extends Component {
   state = {
     /**
      * TODO: Instead of using this state variable to keep track of which page
@@ -18,7 +21,7 @@ class BooksApp extends React.Component {
       <div className="app">
         {this.state.showSearchPage ? (
           <div className="search-books">
-            <div className="search-books-bar">
+            <div className="search-books-bar">      
               <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
               <div className="search-books-input-wrapper">
                 {/* 
