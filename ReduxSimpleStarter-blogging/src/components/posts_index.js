@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { fetchPosts } from './../actions'
 
 class PostsIndex extends Component {
+  componentDidMount() {
+    this.props.fetchPosts()
+  }
+
   render() {
     return (
       <div>
@@ -10,4 +17,6 @@ class PostsIndex extends Component {
   }
 }
 
-export default PostsIndex
+// 第一個參數 state
+// export default connect(null, { fetchPosts: fetchPosts })(PostsIndex)
+export default connect(null, { fetchPosts })(PostsIndex)
