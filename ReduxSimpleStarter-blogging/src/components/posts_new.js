@@ -29,9 +29,20 @@ class PostsNew extends Component {
     )
   }
 
+  onSubmit(values) {
+    // this === component
+    console.log(values)
+  }
+
   render() {
+    // 由 reduxForm 傳給 PostNew
+    // just like redux connect 機制
+    const { handleSubmit } = this.props
+
+    // handleSubmit run validate the form and make sure it is true
+    // then call the callback
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         {/* 不一定要用 label 命名 */}
         <Field
           label="Title For Post"
@@ -48,6 +59,7 @@ class PostsNew extends Component {
           name="content"
           component={this.renderField}
         />
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     )
   }
