@@ -24,6 +24,7 @@ class PostsNew extends Component {
           type="text"
           {...field.input}
         />
+        {field.meta.error}
       </div>
     )
   }
@@ -59,14 +60,17 @@ function validate(values) {
 
   // Validate the inputs from 'values'
   if (!values.title || values.title.length < 3) {
+    // field name property
     errors.title = 'Enter the title that is least 3 charaters!'
   }
 
   if (!values.categories) {
+    // field name property
     errors.categories = 'Enter some  categories!'
   }
 
   if (!values.content) {
+    // field name property
     errors.content = 'Enter some content please!'
   }
 
