@@ -24,7 +24,10 @@ class PostsNew extends Component {
           type="text"
           {...field.input}
         />
-        {field.meta.error}
+        {/*
+            {field.meta.error}
+        */}
+        {field.meta.touched? field.meta.error: ''}
       </div>
     )
   }
