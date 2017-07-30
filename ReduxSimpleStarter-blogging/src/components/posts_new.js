@@ -38,8 +38,8 @@ class PostsNew extends Component {
           component={this.renderField}
         />
         <Field
-          label="Tags"
-          name="tags"
+          label="Categories"
+          name="categories"
           component={this.renderField}
         />
         <Field
@@ -52,7 +52,32 @@ class PostsNew extends Component {
   }
 }
 
+// It be call automatically when submit
+function validate(values) {
+  // console.log(values) -> {title: 'adf', categories: 'adf', content: 'adf'}
+  const errors = {}
+
+  // Validate the inputs from 'values'
+  if (!values.title || values.title.length < 3) {
+    errors.title = 'Enter the title that is least 3 charaters!'
+  }
+
+  if (!values.categories) {
+    errors.categories = 'Enter some  categories!'
+  }
+
+  if (!values.content) {
+    errors.content = 'Enter some content please!'
+  }
+
+  // If errors is empty, the form is fine to submit
+  // If errors has *any* properties redux form assumes form is invalid.
+  return errors
+}
+
 export default reduxForm({
+  // validate: validate,
+  validate,
   form: 'PostsNewForm'  // name of the form
 })(PostsNew)
 
