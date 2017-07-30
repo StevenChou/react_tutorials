@@ -4,6 +4,10 @@ import { Field, reduxForm } from 'redux-form'
 class PostsNew extends Component {
   // field argument 讓 Field component 相應輸入的值的變化
   renderField(field) {
+    // const { touched, error } = field.meta
+    const { meta: { touched, error } } = field
+    const className = `form-group ${(touched && error)? 'has-danger': ''} `
+
     // return (
     //   <div>
     //     <input
@@ -17,7 +21,7 @@ class PostsNew extends Component {
 
     // 一次把所有 field.input 的 event handlers 帶出
     return (
-      <div className="form-group">
+      <div className={className}>
         <label>{field.label}</label>
         <input
           className="form-control"
@@ -27,7 +31,9 @@ class PostsNew extends Component {
         {/*
             {field.meta.error}
         */}
-        {field.meta.touched? field.meta.error: ''}
+        <div className="text-help">
+          {touched? error: ''}
+        </div>
       </div>
     )
   }
