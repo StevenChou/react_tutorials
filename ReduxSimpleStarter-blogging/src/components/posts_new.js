@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 
 class PostsNew extends Component {
   // field argument 讓 Field component 相應輸入的值的變化
-  renderTitleField(field) {
+  renderField(field) {
     // return (
     //   <div>
     //     <input
@@ -17,9 +17,11 @@ class PostsNew extends Component {
 
     // 一次把所有 field.input 的 event handlers 帶出
     return (
-      <div>
+      <div className="form-group">
+        <label>{field.label}</label>
         <input
-          type
+          className="form-control"
+          type="text"
           {...field.input}
         />
       </div>
@@ -29,9 +31,21 @@ class PostsNew extends Component {
   render() {
     return (
       <form>
+        {/* 不一定要用 label 命名 */}
         <Field
+          label="Title For Post"
           name="title"
-          component={this.renderTitleField}
+          component={this.renderField}
+        />
+        <Field
+          label="Tags"
+          name="tags"
+          component={this.renderField}
+        />
+        <Field
+          label="Post Content"
+          name="content"
+          component={this.renderField}
         />
       </form>
     )
