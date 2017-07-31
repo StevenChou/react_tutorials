@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { createPost } from './../actions'
 
 class PostsNew extends Component {
   // field argument 讓 Field component 相應輸入的值的變化
@@ -41,7 +43,8 @@ class PostsNew extends Component {
 
   onSubmit(values) {
     // this === component
-    console.log(values)
+    // console.log(values)
+    this.props.createPost(values)
   }
 
   render() {
@@ -106,7 +109,10 @@ export default reduxForm({
   // validate: validate,
   validate,
   form: 'PostsNewForm'  // name of the form
-})(PostsNew)
+})(
+  // return react component
+  connect(null, { createPost })(PostsNew)
+)
 
 // *** 可以 merge 不同 js 中，相同 form name 的 state
 // PostEdit.js

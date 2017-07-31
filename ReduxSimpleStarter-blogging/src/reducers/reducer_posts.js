@@ -13,6 +13,7 @@ export default function(state = {}, action) {
       // 我們要轉化為 { 4: post }
       return _.mapKeys(action.payload.data, 'id')
     default:
+      console.log('## action.type', action.type)
       return state
   }
 }
