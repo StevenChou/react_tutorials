@@ -167,6 +167,8 @@ class App extends Component {
   }
 }
 
+
+// 更改 application state formate
 function mapStateToProps ({ food, calendar }) {
   const dayOrder = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
 
