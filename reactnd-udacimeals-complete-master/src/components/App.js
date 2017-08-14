@@ -19,6 +19,7 @@ class App extends Component {
     ingredientsModalOpen: false,
     loadingFood: false,
   }
+
   openFoodModal = ({ meal, day }) => {
     this.setState(() => ({
       foodModalOpen: true,
@@ -26,6 +27,7 @@ class App extends Component {
       day,
     }))
   }
+
   closeFoodModal = () => {
     this.setState(() => ({
       foodModalOpen: false,
@@ -34,6 +36,7 @@ class App extends Component {
       food: null,
     }))
   }
+
   searchFood = (e) => {
     if (!this.input.value) {
       return
@@ -49,8 +52,10 @@ class App extends Component {
         loadingFood: false,
       })))
   }
+
   openIngredientsModal = () => this.setState(() => ({ ingredientsModalOpen: true }))
   closeIngredientsModal = () => this.setState(() => ({ ingredientsModalOpen: false }))
+
   generateShoppingList = () => {
     return this.props.calendar.reduce((result, { meals }) => {
       const { breakfast, lunch, dinner } = meals
@@ -63,6 +68,7 @@ class App extends Component {
     }, [])
     .reduce((ings, { ingredientLines }) => ings.concat(ingredientLines), [])
   }
+
   render() {
     const { foodModalOpen, loadingFood, food, ingredientsModalOpen } = this.state
     const { calendar, selectRecipe, remove } = this.props
@@ -118,8 +124,7 @@ class App extends Component {
           overlayClassName='overlay'
           isOpen={foodModalOpen}
           onRequestClose={this.closeFoodModal}
-          contentLabel='Modal'
-        >
+          contentLabel='Modal'>
           <div>
             {loadingFood === true
               ? <Loading delay={200} type='spin' color='#222' className='loading' />
@@ -157,8 +162,7 @@ class App extends Component {
           overlayClassName='overlay'
           isOpen={ingredientsModalOpen}
           onRequestClose={this.closeIngredientsModal}
-          contentLabel='Modal'
-        >
+          contentLabel='Modal'>
           {ingredientsModalOpen && <ShoppingList list={this.generateShoppingList()}/>}
         </Modal>
 
