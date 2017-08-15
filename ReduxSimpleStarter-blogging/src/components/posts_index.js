@@ -7,7 +7,7 @@ import { fetchPosts } from './../actions'
 
 class PostsIndex extends Component {
   componentDidMount() {
-    console.log('## mount')
+    console.log('##[posts_index] mount ')
     this.props.fetchPosts()
   }
 
