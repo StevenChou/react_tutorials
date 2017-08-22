@@ -17,6 +17,7 @@ passport.use(
       callbackURL: '/auth/google/callback'
     },
     accessToken => {
+      // our user has come back to our server
       console.log(accessToken);
     }
   )
@@ -30,6 +31,8 @@ app.get(
     scope: ['profile', 'email']
   })
 );
+
+app.get('/auth/google/callback', passport.authenticate('google'));
 
 // HEROKU DEPLOYMENT Step 1
 // 為了支援 HEROKU 動態產生的 PORT (5000 是在開發環境使用)
