@@ -22,6 +22,15 @@ passport.use(
   )
 );
 
+// 告訴 passport 我要使用 google strategy
+// scope ==> access to this user's profile information and email address as well
+app.get(
+  '/auth/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email']
+  })
+);
+
 // HEROKU DEPLOYMENT Step 1
 // 為了支援 HEROKU 動態產生的 PORT (5000 是在開發環境使用)
 const PORT = process.env.PORT || 5000;
